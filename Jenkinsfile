@@ -2,16 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+
+        stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/sowjanyanu-34/food-delivery.git'
+                checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Images') {
             steps {
-                echo 'Building project...'
+                sh 'docker-compose build'
+            }
+        }
+
+        stage('Run Containers') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+
+        stage('Verify') {
+            steps {
+                sh 'docker ps'
             }
         }
     }
