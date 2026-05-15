@@ -5,17 +5,19 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
+                echo 'Building Docker images...'
                 sh 'docker-compose build'
             }
         }
 
         stage('Run Containers') {
             steps {
+                echo 'Starting containers...'
                 sh 'docker-compose up -d'
             }
         }
 
-        stage('Verify Containers') {
+        stage('Verify') {
             steps {
                 sh 'docker ps'
             }
@@ -26,14 +28,6 @@ pipeline {
         always {
             echo 'Cleaning workspace...'
             cleanWs()
-        }
-
-        success {
-            echo 'Build successful ✅'
-        }
-
-        failure {
-            echo 'Build failed ❌ Check logs'
         }
     }
 }
