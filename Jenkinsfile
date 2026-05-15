@@ -1,70 +1,39 @@
 pipeline {
     agent any
 
-    environment {
-        COMPOSE_PROJECT_NAME = "food-delivery"
-    }
-
     stages {
-
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Verify Workspace') {
-            steps {
-                sh 'ls -la'
-            }
-        }
-
-        stage('Clean Old Containers') {
-            steps {
-                sh '''
-                    docker compose down || true
-                    docker system prune -f || true
-                '''
-            }
-        }
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker compose build'
+                sh 'docker-compose build'
             }
         }
 
-        stage('Start Containers') {
+        stage('Run Containers') {
             steps {
-                sh 'docker compose up -d'
+                sh 'docker-compose up -d'
             }
         }
 
-        stage('Verify Running Containers') {
+        stage('Verify Containers') {
             steps {
                 sh 'docker ps'
-            }
-        }
-
-        stage('Logs Check (Optional)') {
-            steps {
-                sh 'docker compose ps'
             }
         }
     }
 
     post {
+        always {
+            echo 'Cleaning workspace...'
+            cleanWs()
+        }
+
         success {
-            echo 'Pipeline executed successfully 🎉'
+            echo 'Build successful ✅'
         }
 
         failure {
-            echo 'Pipeline failed ❌ Check logs'
-            sh 'docker compose logs || true'
-        }
-
-        always {
-            echo 'Cleaning workspace...'
+            echo 'Build failed ❌ Check logs'
         }
     }
 }
