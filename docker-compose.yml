@@ -1,0 +1,26 @@
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb+srv://sowjanya:Sowjanya123@cluster0.i9biywt.mongodb.net/?retryWrites=true&w=majority
+      - JWT_SECRET=mysecretkey
+    restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: always
+
+  admin:
+    build: ./admin
+    ports:
+      - "5174:5173"
+    depends_on:
+      - backend
+    restart: always
