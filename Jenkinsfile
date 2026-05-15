@@ -6,19 +6,20 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 echo 'Building Docker images...'
-                sh 'docker-compose build'
+                sh 'docker compose build'
             }
         }
 
         stage('Run Containers') {
             steps {
                 echo 'Starting containers...'
-                sh 'docker-compose up -d'
+                sh 'docker compose up -d'
             }
         }
 
-        stage('Verify') {
+        stage('Verify Running Containers') {
             steps {
+                echo 'Checking running containers...'
                 sh 'docker ps'
             }
         }
@@ -26,6 +27,7 @@ pipeline {
 
     post {
         always {
+            echo 'Cleaning workspace...'
             cleanWs()
         }
     }
