@@ -3,7 +3,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - "4000:4000"
+      - "4001:4000"   # ✅ FIXED PORT CONFLICT
     environment:
       - MONGO_URI=mongodb+srv://sowjanya:Sowjanya123@cluster0.i9biywt.mongodb.net/?retryWrites=true&w=majority
       - JWT_SECRET=mysecretkey
