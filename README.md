@@ -1,24 +1,24 @@
-# Food Delivery Website 🍜
+# Food Delivery Website 
 A food delivery website build with mongodb, express, reactjs and nodejs.
 
 CI/CD test update - 15 May
 
 
-# 💡About this project 
+# About this project 
 
 I built full responsive and modern food delivery website. In this project you can go home page, menu, mobile app, contact us and also admin page. And also actually you can add food or more food your basket. Then by clicking the basket icon, you can go peyment page. You'll  detail see how much does cost that food also you can enter your credit card information that payment page, and then finishing the food order. I added admin page some tracking information for your orders. You can see new order and last order information that admin page and also you are following the food process. Last thing some restaurant owner will be able to add food.
 
-## ⚡Technologies
+## Technologies
 * `MONGODB`
 * `EXPRESS`
 * `REACT JS`
 * `NODE JS`
 
-## 🚦 Running the Project
+## Running the Project
 
 To run the project in your local environment, follow these steps: ⬇️
 
-## 1️⃣ You need: 
+## You need: 
 
 - Vite Tool
 - NodeJs.
