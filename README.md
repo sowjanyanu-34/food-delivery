@@ -16,7 +16,7 @@ I built full responsive and modern food delivery website. In this project you ca
 
 ## Running the Project
 
-To run the project in your local environment, follow these steps: ⬇️
+To run the project in your local environment, follow these steps: 
 
 ## You need: 
 
