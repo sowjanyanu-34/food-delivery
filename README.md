@@ -14,7 +14,7 @@ I built full responsive and modern food delivery website. In this project you ca
 * `REACT JS`
 * `NODE JS`
 
-## Running the Project
+## Running the Project:
 
 To run the project in your local environment, follow these steps: 
 
